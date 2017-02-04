@@ -9,6 +9,12 @@ class Program
 {
     static void Main(string[] args)
     {
+        var commandFilePath = System.IO.Path.GetFullPath("..\\commands.json");
+        var json = System.IO.File.ReadAllText(commandFilePath);
+        
+        var commandDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+
+
         var client = new Client();
         var discoveredDevices = client.DiscoverAsync().Result;
 
@@ -20,8 +26,7 @@ class Program
                 var rmDevice = deviceToUse as RMDevice;
                 rmDevice.AuthorizeAsync().Wait();
 
-                var commandDictionary = new Dictionary<string, string>();
-
+                Console.WriteLine("Type 'exit' to quit");
                 var input = string.Empty;
                 while (true)
                 {
@@ -33,25 +38,41 @@ class Program
                         break;
                     }
 
+                    if (commandDictionary.ContainsKey(input))
+                    {
+                        Console.WriteLine("Command already exists");
+                        continue;
+                    }
+
                     rmDevice.EnterLearningModeAsync().Wait();
 
                     Console.WriteLine("Teach the command");
                     Task.Delay(3000).Wait();
-                    var data = rmDevice.ReadLearningDataAsync().Result;
+                    byte[] data;
+                    try
+                    {
+                        data = rmDevice.ReadLearningDataAsync().Result;
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("Error while learning code. Please try again.");
+                        continue;
+                    }
                     var base64 = Convert.ToBase64String(data);
                     Console.WriteLine($"Received {base64}");
 
                     commandDictionary.Add(input, base64);
                 }
 
-                var json = JsonConvert.SerializeObject(commandDictionary);
-                var commandFilePath = System.IO.Path.GetFullPath("..\\commands.json");
+                json = JsonConvert.SerializeObject(commandDictionary);
+
+                System.IO.File.Delete(commandFilePath);
                 var writer = System.IO.File.CreateText(commandFilePath);
+
                 writer.WriteLine(json);
                 writer.Dispose();
             }
 
         }
-        Console.ReadLine();
     }
 }
