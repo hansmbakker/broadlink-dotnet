@@ -26,7 +26,7 @@ if (discoveredDevices.Any())
         // get the temperature as a float
         var temp = await rmDevice.GetTemperatureAsync();
         
-        // enter learning more
+        // enter learning mode
         await rmDevice.EnterLearningModeAsync();
         
         // give the user 3 seconds to push a remote button and read the data from it
