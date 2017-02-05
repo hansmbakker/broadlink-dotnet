@@ -10,6 +10,9 @@
     <EmbeddedResource Include="**\*.resx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Broadlink.Net.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="1.6.1" />
     <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
     <PackageReference Include="System.Net.Sockets" Version="4.3.0" />

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>wind-rider.Broadlink.Net</id>
+    <version>0.1</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/wind-rider/broadlink-dotnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Broadlink IoT</tags>
+  </metadata>
+  <files>
+    <!-- Include everything in \build -->
+    <file src="bin\Release\**" target="build" />
+
+    <!-- Other files -->
+    <!-- ... -->
+  </files>
+  <dependencies>
+    <dependency Id="NETStandard.Library" Version="1.6.1" />
+    <dependency Id="System.Net.NetworkInformation" Version="4.3.0" />
+    <dependency Id="System.Net.Sockets" Version="4.3.0" />
+    <dependency Id="System.Security.Cryptography.Algorithms" Version="4.3.0" />
+  </dependencies>
+</package>
