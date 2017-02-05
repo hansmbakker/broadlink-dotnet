@@ -3,9 +3,9 @@
   <metadata>
     <id>wind-rider.Broadlink.Net</id>
     <version>0.1</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <title>Broadlink.Net</title>
+    <authors>wind-rider</authors>
+    <owners>wind-rider</owners>
     <projectUrl>https://github.com/wind-rider/broadlink-dotnet</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
@@ -15,7 +15,7 @@
   </metadata>
   <files>
     <!-- Include everything in \build -->
-    <file src="bin\Release\**" target="build" />
+    <file src="bin\Release\**" target="lib" />
 
     <!-- Other files -->
     <!-- ... -->
