@@ -3,6 +3,10 @@
 
 Ported from https://github.com/mjg59/python-broadlink/.
 
+NOT MAINTAINED
+--------------------------
+This project is not maintained anymore. Feel free to fork and improve it.
+
 Currently only supports RM devices (tested with RM3 Mini Blackbean).
 
 Usage
